@@ -1,10 +1,33 @@
-import.java.io.*;
+/**
+ * Text Adventure: Skeleton Code
+ * <p>
+ * This program provides skeleton code for anyone interested in creating
+ * their own text adventure game.  Currently this implementation is not map-based
+ * (the user cannot type n, s, e, or w to walk in certain directions).
+ * As it stands this is set up as a room-based/linear text adventure game, i.e. you
+ * must complete a certain number of tasks and/or have certain items in
+ * inventory in order to go on to the next room.
+ * <p>
+ * Map implementation will be coming soon, however if you wish to implement this, 
+ * tutorials can be found online.
+ * 
+ * Enjoy!
+ * 
+ * TODO:
+ * -Add load, save, and restart functions
+ * -Add map functionality (north, east, south, west navigation)
+ * -Improve algorithm for printing inventory
+ * -Optimize layout and reduce repetitive code
+ * 
+ * @author      
+ * @version     1.0
+ * @since       2014-01-28
+ */
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StuyruleWarriors {
-    
-    public static final String filename = "StuyruleWarriors.dat";
+public class TextAdventure2 {
 
     /**
      * Main method.
