@@ -17,7 +17,7 @@ public class Genericbattle {
 			System.out.println ("4. Sneak Attack");
 			//System.out.println ("5. Use Item");
 			int x = sc.nextInt();
-			//There should be code that clears the screen here
+			System.out.print("\033\143");
 			if (x == 1) {
 			l.attack(c);
 			}
