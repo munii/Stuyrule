@@ -43,6 +43,7 @@ public class Genericbattle {
 			}
 		else {
 			System.out.println (l.name + " " + "emerges victorious!");
+			//Need to work on item drops
 			//Int x = rand.nextInt(99); //Numbers for drop rate probably need tweaking
 			//if (x < 25) {
 				//System.out.println (
