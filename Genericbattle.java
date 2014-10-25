@@ -17,7 +17,10 @@ public class Genericbattle {
 			System.out.println ("4. Sneak Attack");
 			//System.out.println ("5. Use Item");
 			int x = sc.nextInt();
-			System.out.print("\033\143");
+			//System.out.print("\033\143"); Can someone test this part on their computer? It doesnt work on mine just comment out the next for statement to test and un comment this
+			for (int i = 0; i<150; i++){ //Clears Screen but forces everything to the bottom of the screen
+				System.out.print("\n");
+			}
 			if (x == 1) {
 			l.attack(c);
 			}
