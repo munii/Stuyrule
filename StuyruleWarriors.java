@@ -2,16 +2,12 @@ import.java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StuyruleWarriors {
+public class StuyruleWarriors implements java.io.Serializable {
     
+    // For information I/O
     public static final String filename = "StuyruleWarriors.dat";
 
-    /**
-     * Main method.
-     * 
-     * @param args
-     *            the command line arguments
-     */
+    // Main Method
     public static void main(String[] args) {
 
         // Create world
@@ -24,16 +20,9 @@ public class StuyruleWarriors {
         world.roomOne();
     }
 
-    /**
-     * Get input from user.
-     * <p>
-     * This method gets input from user, checks for validity, and formats text.
-     * If input is a system command (help, exit, etc.) then input is sent to the
-     * systemCommandResponses method.
-     * <p>
-     * 
-     * @return input
-     */
+    // **** INPUT BLOCK ****
+
+    // Receives input from User
     public static String getInput() {
 
         // Prompt and read input
@@ -42,63 +31,42 @@ public class StuyruleWarriors {
         String input = in.nextLine();
 
         // Format input
-        input = formatInput(input);
+        input = formInput(input);
 
         // Re-prompt if input is empty or gibberish
-        while (isInputEmptyOrGibberish(input)) {
+        while (isInputDumb(input)) {
             System.out.print("> ");
             input = in.nextLine();
             input = formatInput(input);
         }
 
         // If system command is typed, send to systemCommandResponses method
-        if (isValidSystemCommand(input)) {
-            systemCommandResponses(input);
+        if (isGameCommand(input)) {
+            gameCommandResponse(input);
         }
 
         return input;
     }
 
-    /**
-     * Check if input is empty or gibberish, if so respond with message.
-     * <p>
-     * This method checks the input for invalid entries and responds with
-     * corresponding error messages.
-     * <p>
-     * 
-     * @param input
-     *            user input text
-     * @return true if input is empty or gibberish
-     */
-    public static boolean isInputEmptyOrGibberish(String input) {
+    public static boolean isInputDumb(String input) {
 
         // If command is valid, input is not empty or gibberish
         if (input.length() > 0
-                && (isValidActionCommand(input) || isValidSystemCommand(input))) {
+                && (isValidActionCommand(input) || isGameCommand(input))) {
             return false;
         }
         // Otherwise, provide responses if empty or gibberish
         else if (input.isEmpty()) {
-            System.out.println("Cat got your tongue?");
+            System.out.println("You mute or something? Type 'help' to cure your condition.");
         } else {
-            System.out.println("I don't understand.");
+            System.out.println("Are you incapable of rational thought? Type 'help' if not.");
         }
 
         return true;
     }
 
-    /**
-     * Format text from user input.
-     * <p>
-     * This method formats the user input text by converting to lower case and
-     * removing any extra spaces.
-     * <p>
-     * 
-     * @param input
-     *            user input text
-     * @return modified/formatted input string
-     */
-    public static String formatInput(String input) {
+    // Corrects erroneous user input
+    public static String formInput(String input) {
 
         // Convert to lower case
         input = input.toLowerCase();
@@ -110,18 +78,8 @@ public class StuyruleWarriors {
         return input;
     }
 
-    /**
-     * Check for valid action command.
-     * <p>
-     * This method checks that a valid action command (get, open, etc.) was
-     * entered by the is analyzed.
-     * <p>
-     * 
-     * @param input
-     *            user input text
-     * @return true if valid action command
-     */
-    public static boolean isValidActionCommand(String input) {
+    // Tests if a command is an action or game command
+    public static boolean isActionCommand(String input) {
 
         // Extract command from input (all letters before space)
         if (input.contains(" ")) {
@@ -129,9 +87,8 @@ public class StuyruleWarriors {
         }
 
         // Define valid action commands
-        String[] actionCommands = { "n", "s", "e", "w", "look", "get", "read",
-                "talk", "open", "close", "throw", "kill", "lock", "unlock",
-                "take", "move", "push", "pull", "turn", "shoot", "leave" };
+        String[] actionCommands = { "look", "get", "read",
+                "talk", "open",, "attack","take","pull", "leave" };
 
         // Check for valid action command
         for (int i = 0; i < actionCommands.length; i++) {
@@ -143,19 +100,7 @@ public class StuyruleWarriors {
         return false;
     }
 
-    /**
-     * Check for valid system command, if valid send to system command responses
-     * method.
-     * <p>
-     * This method checks if a valid system command (exit, help, etc.) was
-     * entered by the user. The verb is extracted from the command using
-     * substring and is analyzed.
-     * <p>
-     * 
-     * @param input
-     *            user input text
-     * @return true if valid system command
-     */
+    // Game command stuff
     public static boolean isValidSystemCommand(String input) {
 
         // Extract command from input (all letters before space)
@@ -177,18 +122,8 @@ public class StuyruleWarriors {
         return false;
     }
 
-    /**
-     * System responses for system commands
-     * <p>
-     * This method provides system responses when the user enters a system
-     * command (such as exit or help).
-     * <p>
-     * 
-     * @param input
-     *            user input text
-     * @return true if valid system command
-     */
-    public static void systemCommandResponses(String input) {
+    // Provides responses to game commands
+    public static void systemGameResponses(String input) {
 
         // Display help information
         if (input.equals("help")) {
@@ -197,11 +132,12 @@ public class StuyruleWarriors {
             System.out
                     .println(" Command syntax: <command>(space)<something>, e.g. get book");
             System.out
-                    .println(" Action commands: look, get, open, close, talk, move, leave, etc.");
+                    .println(" Action commands: look, get, talk, move, leave, etc.");
             System.out
-                    .println(" System commands: help, inventory, load, save, restart, quit");
+                    .println(" System commands: help, inventory, menu, load, save, restart, quit");
             System.out
-                    .println(" Tips: Typing \"i\" is a shortcut to view your inventory");
+                    .println(" Tips: Typing \"i\" is a shortcut to view your inventory.");
+	    System.out.println(" Tips: Typing \"m\" is a shortcut to view your stats.");
         }
 
         // Display inventory contents
@@ -209,6 +145,11 @@ public class StuyruleWarriors {
                 || input.equals("inventory")) {
             World.inventory.print();
         }
+
+	// Display player stats
+	else if ((input.equals("m") || (input.equals("menu"))) {
+		World.menu.print();
+	    }
 
         // Exit game
         else if (input.equals("exit") || input.equals("quit")) {
@@ -231,6 +172,8 @@ public class StuyruleWarriors {
 
         // Add load, save, restart functionality
     }
+
+    // ACTUAL GAME STUFF
 
     // Player inventory class (add and print)
     public static class Inventory {
@@ -266,6 +209,27 @@ public class StuyruleWarriors {
         }
     }
 
+    public static class Menu {
+
+        // Create inventory
+        ArrayList<String> menu = new ArrayList<String>();
+
+        // Print inventory
+        void print() {
+            System.out.println("[Inventory]");
+            if (this.inv.size() == 0) {
+                System.out.println("You have nothing.");
+            }
+
+            // Capitalize first letter of each item and print
+            for (String itemName : this.inv) {
+                itemName = itemName.substring(0, 1).toUpperCase()
+                        + itemName.substring(1);
+                System.out.println(" " + itemName);
+            }
+        }
+ 
+
     public static class Room {
         private int index;
         private int count = 0;
@@ -273,6 +237,9 @@ public class StuyruleWarriors {
         private String description;
         private ArrayList<String> items;
         private ArrayList<String> commands;
+	private ArrayList<String> foods;
+	private ArrayList<String> colors;
+	private ArrayList<String> subjects;
 
         public int getIndex() {
             return this.index;
@@ -347,16 +314,18 @@ public class StuyruleWarriors {
 
     // Class World contains title screen, introduction, and all rooms 
     public static class World {
+        String[] foods = { "chicken", "curry", "sushi", "Starbucks" };
+	String[] colors = { "red", "blue", "green", "purple" };
 
         // Print title screen and introduction text
         void titleScreen() {
-            System.out.println("+-------------------------------+");
-            System.out.println("| Text Adventure: Skeleton Code |");
-            System.out.println("+-------------------------------+");
+            System.out.println("+-----------------------------------+");
+            System.out.println("| s t u y r u l e | w a r r i o r s |");
+            System.out.println("+-----------------------------------+");
             System.out.println();
             System.out
-                    .println("This is skeleton code for a text adventure game.");
-            System.out.println("Type the introduction to your game here.");
+                    .println("Muni | Lucas | Ali | Sean");
+            System.out.println("Pro Animis Potestateque Sapientiaque");
             System.out.println();
         }
 
@@ -371,12 +340,12 @@ public class StuyruleWarriors {
             // Load room one
             Room roomOne = new Room();
             roomOne.setIndex(1);
-            roomOne.setName("Bedroom");
-            roomOne.setDescription("You are in a dark room.");
+            roomOne.setName("Homeroom");
+            roomOne.setDescription("You're in your homeroom. There are other freshmen in here who are just as stringy looking as you are. Your homeroom teacher sits in her chair, apathetic. The teacher, not the chair. Although if the chair could be bored, it would. Meanwhile the frenzy of new students envelops you, you see your ID and Schedule amidst the chaos.");
             roomOne.setCount(1);
             ArrayList<String> roomOneItems = new ArrayList<String>();
-            roomOneItems.add("book");
-            roomOneItems.add("key");
+            roomOneItems.add("ID");
+            roomOneItems.add("Schedule");
             roomOne.setItems(roomOneItems);
 
             // Display room one description and items
@@ -392,16 +361,16 @@ public class StuyruleWarriors {
                     System.out.println(roomOne.getDescription());
                     roomOne.printItems(roomOneItems);
                 }
-                // Get book
-                else if (input.equals("get book")
-                        && roomOneItems.contains("book")) {
-                    roomOneItems.remove("book");
-                    this.inventory.add("book");
-                } else if (input.equals("get book")
-                        && !roomOneItems.contains("book")) {
-                    System.out.println("You already have the book.");
+                // Get ID
+                else if (input.equals("get ID")
+                        && roomOneItems.contains("ID")) {
+                    roomOneItems.remove("ID");
+                    this.inventory.add("ID");
+                } else if (input.equals("get ID")
+                        && !roomOneItems.contains("ID")) {
+                    System.out.println("You already have your ID!");
                 }
-                // Get key
+                // Get Schedule
                 else if (input.equals("get key")
                         && roomOneItems.contains("key")) {
                     roomOneItems.remove("key");
@@ -411,6 +380,19 @@ public class StuyruleWarriors {
                     System.out.println("You already have the key.");
                 }
 
+		// Read ID
+		else if ((input.equals("read ID") || input.equals("look ID") || input.equals("check ID")) 
+			 && !roomOneItems.contains("ID")) {
+		    Scanner info = new Scanner( System.in );
+		    
+		    
+			 }
+			 else if {
+			     ((input.equals("read ID") || input.equals("look ID") || input.equals("check ID") 
+			       && roomOneItems.contains("ID")) {
+				 System.out.println("You should try getting your ID first...");
+			     }
+
                 else if (input.equals("leave")) {
                     System.out.println("You exit the room.");
                     System.out.println();
@@ -419,7 +401,7 @@ public class StuyruleWarriors {
 
                 // Catch-all for unavailable actions
                 else if (!isValidSystemCommand(input)) {
-                    System.out.println("You can't do that.");
+                    System.out.println("Silly freshman. Try reading your ID or schedule.");
                 }
                 input = getInput();
             }
@@ -483,6 +465,10 @@ public class StuyruleWarriors {
                 else if (!isValidSystemCommand(input)) {
                     System.out.println("You can't do that.");
                 }
+
+
+
+
                 input = getInput();
             }
 
