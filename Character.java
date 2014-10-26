@@ -59,11 +59,11 @@ public class Character {
 
     public String toString() {
 	String s = name + " ";
-	s+= "HP = " + HP + " ";
-	s+= "MaxHP = " + maxHP + " ";
-	s+= "damage = " + damage + " ";
-	s+= "multiplier = " + multiplier + " ";
-	s+= "accuracy = " + accuracy + " ";
+	s+= "\n" + "HP = " + HP + " ";
+	s+= "\n" + "MaxHP = " + maxHP + " ";
+	s+= "\n" + "damage = " + damage + " ";
+	s+= "\n" + "multiplier = " + multiplier + " ";
+	s+= "\n" + "accuracy = " + accuracy + " ";
 	return s;
     }
 
