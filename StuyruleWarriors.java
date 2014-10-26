@@ -1,4 +1,4 @@
-import.java.io.*;
+import.java.io.*; //Compiling gave an error message here: identifier not found
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -88,7 +88,7 @@ public class StuyruleWarriors implements java.io.Serializable {
 
         // Define valid action commands
         String[] actionCommands = { "look", "get", "read",
-                "talk", "open",, "attack","take","pull", "leave" };
+                "talk", "open", "attack","take","pull", "leave" };
 
         // Check for valid action command
         for (int i = 0; i < actionCommands.length; i++) {
@@ -147,7 +147,7 @@ public class StuyruleWarriors implements java.io.Serializable {
         }
 
 	// Display player stats
-	else if ((input.equals("m") || (input.equals("menu"))) {
+	else if ((input.equals("m") || (input.equals("menu")))) {
 		World.menu.print();
 	    }
 
@@ -387,11 +387,11 @@ public class StuyruleWarriors implements java.io.Serializable {
 		    
 		    
 			 }
-			 else if {
+			 else if 
 			     ((input.equals("read ID") || input.equals("look ID") || input.equals("check ID") 
-			       && roomOneItems.contains("ID")) {
+			       && roomOneItems.contains("ID"))) {
 				 System.out.println("You should try getting your ID first...");
-			     }
+			       }
 
                 else if (input.equals("leave")) {
                     System.out.println("You exit the room.");
@@ -475,4 +475,5 @@ public class StuyruleWarriors implements java.io.Serializable {
         }
 
     }
+}
 }
