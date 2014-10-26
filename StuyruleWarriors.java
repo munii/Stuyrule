@@ -28,13 +28,9 @@ public class StuyruleWarriors {
 	System.out.println("You're on your way!");
 	}
 
-	Battle battleSystem = new Battle();
-	Link link = new Link(n, color);
-	Character chair = new Character("chair");
-	Character teacher = new Character("teacher");
 
         // Load room one
-        world.roomOne();
+        world.roomOne(n,color);
     }
 
     // **** INPUT BLOCK ****
@@ -210,8 +206,4 @@ public class StuyruleWarriors {
 
 }
    
-
-   
- 
-
     
