@@ -20,11 +20,13 @@ public class World {
         // Load player inventory
     static Inventory inventory = new Inventory();
      
-    // Load player menu
-    static Menu menu = new Menu();
     
         // Start game
         void roomOne() {
+        	Battle battleSystem = new Battle(); //Initializations for the Room, may want to change this
+		Character chair = new Character("chair");
+		Character teacher = new Character("teacher");
+		Link Link = new Link("Link", 2);
 
             // Load room one
             Room roomOne = new Room();
