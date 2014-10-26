@@ -134,9 +134,10 @@ public class StuyruleWarriors implements java.io.Serializable {
             System.out
                     .println(" Action commands: look, get, talk, move, leave, etc.");
             System.out
-                    .println(" System commands: help, inventory, load, save, restart, quit");
+                    .println(" System commands: help, inventory, menu, load, save, restart, quit");
             System.out
-                    .println(" Tips: Typing \"i\" is a shortcut to view your inventory");
+                    .println(" Tips: Typing \"i\" is a shortcut to view your inventory.");
+	    System.out.println(" Tips: Typing \"m\" is a shortcut to view your stats.");
         }
 
         // Display inventory contents
@@ -144,6 +145,11 @@ public class StuyruleWarriors implements java.io.Serializable {
                 || input.equals("inventory")) {
             World.inventory.print();
         }
+
+	// Display player stats
+	else if ((input.equals("m") || (input.equals("menu"))) {
+		World.menu.print();
+	    }
 
         // Exit game
         else if (input.equals("exit") || input.equals("quit")) {
@@ -202,6 +208,27 @@ public class StuyruleWarriors implements java.io.Serializable {
             return false;
         }
     }
+
+    public static class Menu {
+
+        // Create inventory
+        ArrayList<String> menu = new ArrayList<String>();
+
+        // Print inventory
+        void print() {
+            System.out.println("[Inventory]");
+            if (this.inv.size() == 0) {
+                System.out.println("You have nothing.");
+            }
+
+            // Capitalize first letter of each item and print
+            for (String itemName : this.inv) {
+                itemName = itemName.substring(0, 1).toUpperCase()
+                        + itemName.substring(1);
+                System.out.println(" " + itemName);
+            }
+        }
+ 
 
     public static class Room {
         private int index;
@@ -287,6 +314,8 @@ public class StuyruleWarriors implements java.io.Serializable {
 
     // Class World contains title screen, introduction, and all rooms 
     public static class World {
+        String[] foods = { "chicken", "curry", "sushi", "Starbucks" };
+	String[] colors = { "red", "blue", "green", "purple" };
 
         // Print title screen and introduction text
         void titleScreen() {
