@@ -25,10 +25,10 @@ public class Link extends Character {
     //is there a more efficient way to do this?
     public String toString () {
 	String s = super.toString();
-	s += "Defense =" + defense + " ";
-	s += "Location is" + location + " ";
-	s += "Favorite Food is" + favoriteFood + " ";
-	s += "Favorite Subject is" + favoriteSubject + " ";
+	s += "\n" + "Defense =" + " " + defense + " ";
+	s += "\n" + "Location is" + " " + location + " ";
+	s += "\n" + Favorite Food is" + " " + favoriteFood + " ";
+	s += "\n" + "Favorite Subject is" + " " + favoriteSubject + " ";
 	return s;
     }
     //Methods
