@@ -1,12 +1,8 @@
-import.java.io.*; //Compiling gave an error message here: identifier not found
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StuyruleWarriors implements java.io.Serializable {
+public class StuyruleWarriors{
     
-    // For information I/O
-    public static final String filename = "StuyruleWarriors.dat";
-
     // Main Method
     public static void main(String[] args) {
 
@@ -371,27 +367,27 @@ public class StuyruleWarriors implements java.io.Serializable {
                     System.out.println("You already have your ID!");
                 }
                 // Get Schedule
-                else if (input.equals("get key")
-                        && roomOneItems.contains("key")) {
-                    roomOneItems.remove("key");
-                    this.inventory.add("key");
-                } else if (input.equals("get key")
-                        && !roomOneItems.contains("key")) {
-                    System.out.println("You already have the key.");
+                else if (input.equals("get schedule")
+                        && roomOneItems.contains("schedule")) {
+                    roomOneItems.remove("schedule");
+                    this.inventory.add("schedule");
+                } else if (input.equals("schedule")
+                        && !roomOneItems.contains("schedule")) {
+                    System.out.println("You already have the schedule.");
                 }
 
-		// Read ID
-		else if ((input.equals("read ID") || input.equals("look ID") || input.equals("check ID")) 
-			 && !roomOneItems.contains("ID")) {
-		    Scanner info = new Scanner( System.in );
+				// Read ID
+				else if ((input.equals("read ID") || input.equals("look ID") || input.equals("check ID")) 
+					&& !roomOneItems.contains("ID")) {
+					Scanner info = new Scanner( System.in );
 		    
 		    
-			 }
-			 else if 
-			     ((input.equals("read ID") || input.equals("look ID") || input.equals("check ID") 
-			       && roomOneItems.contains("ID"))) {
-				 System.out.println("You should try getting your ID first...");
-			       }
+					}
+				else if 
+					((input.equals("read ID") || input.equals("look ID") || input.equals("check ID") 
+					&& roomOneItems.contains("ID"))) {
+					System.out.println("You should try getting your ID first...");
+					}
 
                 else if (input.equals("leave")) {
                     System.out.println("You exit the room.");
