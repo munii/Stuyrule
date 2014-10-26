@@ -1,4 +1,7 @@
-public static class Inventory {
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Inventory {
 
         // Create inventory
         ArrayList<String> inv = new ArrayList<String>();
@@ -29,7 +32,4 @@ public static class Inventory {
 
             return false;
         }
-    };; This buffer is for notes you don't want to save, and for Lisp evaluation.
-;; If you want to create a file, visit that file with C-x C-f,
-;; then enter the text in that file's own buffer.
-
+    }

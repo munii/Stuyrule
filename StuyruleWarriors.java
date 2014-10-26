@@ -11,6 +11,27 @@ public class StuyruleWarriors {
 
         // Load title screen
         world.titleScreen();
+	
+	//Load info prompt
+	Scanner s = new Scanner( System.in );
+	String n;
+	int color;
+	System.out.println("Please enter your name. \n > ");
+	n = s.nextLine();
+	System.out.println("Welcome to Stuyrule " + n + " Last question before you go to homeroom- what's your favorite color out of these four? \n (1) Green \n (2) Red \n (3) Blue \n (4) Purple \n >");
+	color = s.nextInt();
+	if ((color != 1) || (color != 2) || (color != 3) || (color != 4)){
+	    System.out.println("Please enter a valid number from 1-4");
+	    color = s.nextInt();
+	}
+	else{
+	System.out.println("You're on your way!");
+	}
+
+	Battle battleSystem = new Battle();
+	Link link = new Link(n, color);
+	Character chair = new Character("chair");
+	Character teacher = new Character("teacher");
 
         // Load room one
         world.roomOne();
@@ -33,7 +54,7 @@ public class StuyruleWarriors {
         while (isInputDumb(input)) {
             System.out.print("> ");
             input = in.nextLine();
-            input = formatInput(input);
+            input = formInput(input);
         }
 
         // If system command is typed, send to systemCommandResponses method
@@ -48,7 +69,7 @@ public class StuyruleWarriors {
 
         // If command is valid, input is not empty or gibberish
         if (input.length() > 0
-                && (isValidActionCommand(input) || isGameCommand(input))) {
+                && (isActionCommand(input) || isGameCommand(input))) {
             return false;
         }
         // Otherwise, provide responses if empty or gibberish
@@ -84,7 +105,7 @@ public class StuyruleWarriors {
 
         // Define valid action commands
         String[] actionCommands = { "look", "get", "read",
-                "talk", "open",, "attack","take","pull", "leave" };
+                "talk", "open", "attack","take","pull", "leave" };
 
         // Check for valid action command
         for (int i = 0; i < actionCommands.length; i++) {
@@ -97,7 +118,7 @@ public class StuyruleWarriors {
     }
 
     // Game command stuff
-    public static boolean isValidSystemCommand(String input) {
+    public static boolean isGameCommand(String input) {
 
         // Extract command from input (all letters before space)
         if (input.contains(" ")) {
@@ -106,7 +127,7 @@ public class StuyruleWarriors {
 
         // Define valid system commands
         String[] systemCommands = { "help", "inventory", "inv", "i", "load",
-                "save", "restart", "quit", "exit" };
+				    "save", "restart", "quit", "exit", "menu", "m"};
 
         // Check for valid system command
         for (int i = 0; i < systemCommands.length; i++) {
@@ -119,7 +140,7 @@ public class StuyruleWarriors {
     }
 
     // Provides responses to game commands
-    public static void systemGameResponses(String input) {
+    public static void gameCommandResponse(String input) {
 
         // Display help information
         if (input.equals("help")) {
@@ -143,9 +164,27 @@ public class StuyruleWarriors {
         }
 
 	// Display player stats
-	else if ((input.equals("m") || (input.equals("menu"))) {
-		World.menu.print();
+	else if ((input.equals("m") || (input.equals("menu")))) {
+	    System.out.println("[Stats]");
+            System.out.println("Name: " + Link.name);
+	    if (Link.color == 1) {
+		System.out.println("Color: Green");
 	    }
+	    else if (Link.color == 2) {
+		System.out.println("Color: Red");
+	    }
+	    else if (Link.color == 3) {
+		System.out.println("Color: Blue");
+	    }
+	    else if (Link.color == 4) {
+		System.out.println("Color: Purple");
+	    }
+	    System.out.println("Attack: " + Link.damage);
+	    System.out.println("Hit Points: " + Link.HP);
+	    System.out.println("Damage: " + Link.defense);
+	    System.out.println("Speed: " + Link.speed);
+	    System.out.println("Accuracy: " + Link.accuracy);
+	}
 
         // Exit game
         else if (input.equals("exit") || input.equals("quit")) {
@@ -169,9 +208,7 @@ public class StuyruleWarriors {
         // Add load, save, restart functionality
     }
 
-    // ACTUAL GAME STUFF
-
-    // Player inventory class (add and print)
+}
    
 
    

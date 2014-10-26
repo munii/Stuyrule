@@ -23,6 +23,9 @@ public class World {
     // Load player menu
     static Menu menu = new Menu();
     
+    // Load battle system
+    static Battle battleSystem = new Battle();
+
         // Start game
         void roomOne() {
 

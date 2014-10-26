@@ -1,11 +1,7 @@
-import.java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StuyruleWarriors implements java.io.Serializable {
-    
-    // For information I/O
-    public static final String filename = "StuyruleWarriors.dat";
+public class StuyruleWarriors {
 
     // Main Method
     public static void main(String[] args) {
@@ -15,6 +11,25 @@ public class StuyruleWarriors implements java.io.Serializable {
 
         // Load title screen
         world.titleScreen();
+	
+	//Load info prompt
+	Scanner s = new Scanner( System.in );
+	String n;
+	int color;
+	System.out.println("Please enter your name. \n > ");
+	n = s.nextLine();
+	System.out.println("Welcome to Stuyrule " + n + " Last question before you go to homeroom- what's your favorite color out of these four? \n (1) Green \n (2) Red \n (3) Blue \n (4) Purple \n >");
+	color = s.nextInt();
+	if ((color != 1) || (color != 2) || (color != 3) || (color != 4)){
+	    System.out.println("Please enter a valid number from 1-4");
+	    color = s.nextInt();
+	}
+	else{
+	System.out.println("You're on your way!");
+	}
+	Link link = new Link(n, color);
+	Character chair = new Character("chair");
+	Character teacher = new Character("teacher");
 
         // Load room one
         world.roomOne();
@@ -37,7 +52,7 @@ public class StuyruleWarriors implements java.io.Serializable {
         while (isInputDumb(input)) {
             System.out.print("> ");
             input = in.nextLine();
-            input = formatInput(input);
+            input = formInput(input);
         }
 
         // If system command is typed, send to systemCommandResponses method
@@ -52,7 +67,7 @@ public class StuyruleWarriors implements java.io.Serializable {
 
         // If command is valid, input is not empty or gibberish
         if (input.length() > 0
-                && (isValidActionCommand(input) || isGameCommand(input))) {
+                && (isActionCommand(input) || isGameCommand(input))) {
             return false;
         }
         // Otherwise, provide responses if empty or gibberish
@@ -88,7 +103,7 @@ public class StuyruleWarriors implements java.io.Serializable {
 
         // Define valid action commands
         String[] actionCommands = { "look", "get", "read",
-                "talk", "open",, "attack","take","pull", "leave" };
+                "talk", "open", "attack","take","pull", "leave" };
 
         // Check for valid action command
         for (int i = 0; i < actionCommands.length; i++) {
@@ -101,7 +116,7 @@ public class StuyruleWarriors implements java.io.Serializable {
     }
 
     // Game command stuff
-    public static boolean isValidSystemCommand(String input) {
+    public static boolean isGameCommand(String input) {
 
         // Extract command from input (all letters before space)
         if (input.contains(" ")) {
@@ -110,7 +125,7 @@ public class StuyruleWarriors implements java.io.Serializable {
 
         // Define valid system commands
         String[] systemCommands = { "help", "inventory", "inv", "i", "load",
-                "save", "restart", "quit", "exit" };
+				    "save", "restart", "quit", "exit", "menu", "m"};
 
         // Check for valid system command
         for (int i = 0; i < systemCommands.length; i++) {
@@ -123,7 +138,7 @@ public class StuyruleWarriors implements java.io.Serializable {
     }
 
     // Provides responses to game commands
-    public static void systemGameResponses(String input) {
+    public static void gameCommandResponse(String input) {
 
         // Display help information
         if (input.equals("help")) {
@@ -147,9 +162,27 @@ public class StuyruleWarriors implements java.io.Serializable {
         }
 
 	// Display player stats
-	else if ((input.equals("m") || (input.equals("menu"))) {
-		World.menu.print();
+	else if ((input.equals("m") || (input.equals("menu")))) {
+	    System.out.println("[Stats]");
+            System.out.println("Name: " + Link.name);
+	    if (Link.color == 1) {
+		System.out.println("Color: Green");
 	    }
+	    else if (Link.color == 2) {
+		System.out.println("Color: Red");
+	    }
+	    else if (Link.color == 3) {
+		System.out.println("Color: Blue");
+	    }
+	    else if (Link.color == 4) {
+		System.out.println("Color: Purple");
+	    }
+	    System.out.println("Attack: " + Link.damage);
+	    System.out.println("Hit Points: " + Link.HP);
+	    System.out.println("Damage: " + Link.defense);
+	    System.out.println("Speed: " + Link.speed);
+	    System.out.println("Accuracy: " + Link.accuracy);
+	}
 
         // Exit game
         else if (input.equals("exit") || input.equals("quit")) {
@@ -173,306 +206,10 @@ public class StuyruleWarriors implements java.io.Serializable {
         // Add load, save, restart functionality
     }
 
-    // ACTUAL GAME STUFF
+}
+   
 
-    // Player inventory class (add and print)
-    public static class Inventory {
-
-        // Create inventory
-        ArrayList<String> inv = new ArrayList<String>();
-
-        // Add item to inventory (and print message)
-        void add(String item) {
-            System.out.println("You pick up the " + item + ".");
-            this.inv.add(item);
-        }
-
-        // Print inventory
-        void print() {
-            System.out.println("[Inventory]");
-            if (this.inv.size() == 0) {
-                System.out.println("You have nothing.");
-            }
-
-            // Capitalize first letter of each item and print
-            for (String itemName : this.inv) {
-                itemName = itemName.substring(0, 1).toUpperCase()
-                        + itemName.substring(1);
-                System.out.println(" " + itemName);
-            }
-        }
-
-        // Check if item is already in inventory
-        boolean isInInventory(String item) {
-
-            return false;
-        }
-    }
-
-    public static class Menu {
-
-        // Create inventory
-        ArrayList<String> menu = new ArrayList<String>();
-
-        // Print inventory
-        void print() {
-            System.out.println("[Inventory]");
-            if (this.inv.size() == 0) {
-                System.out.println("You have nothing.");
-            }
-
-            // Capitalize first letter of each item and print
-            for (String itemName : this.inv) {
-                itemName = itemName.substring(0, 1).toUpperCase()
-                        + itemName.substring(1);
-                System.out.println(" " + itemName);
-            }
-        }
+   
  
 
-    public static class Room {
-        private int index;
-        private int count = 0;
-        private String name;
-        private String description;
-        private ArrayList<String> items;
-        private ArrayList<String> commands;
-	private ArrayList<String> foods;
-	private ArrayList<String> colors;
-	private ArrayList<String> subjects;
-
-        public int getIndex() {
-            return this.index;
-        }
-
-        public void setIndex(int aIndex) {
-            this.index = aIndex;
-        }
-
-        public int getCount() {
-            return this.count;
-        }
-
-        public void setCount(int aCount) {
-            this.count = aCount;
-        }
-
-        public String getName() {
-            return this.name;
-        }
-
-        public void setName(String aName) {
-            this.name = aName;
-        }
-
-        public String getDescription() {
-            return this.description;
-        }
-
-        public void setDescription(String aDescription) {
-            this.description = aDescription;
-        }
-
-        public ArrayList<String> getItems() {
-            return this.items;
-        }
-
-        public void setItems(ArrayList<String> aItems) {
-            this.items = aItems;
-        }
-
-        public ArrayList<String> getCommands() {
-            return this.commands;
-        }
-
-        public void setCommands(ArrayList<String> aCommands) {
-            this.commands = aCommands;
-        }
-
-        void printItems(ArrayList<String> roomItems) {
-            if (roomItems.size() > 0) {
-                System.out.print("You see a ");
-                if (roomItems.size() == 1) {
-                    System.out.println(roomItems.get(0) + ".");
-                }
-                if (roomItems.size() == 2) {
-                    System.out.println(roomItems.get(0) + " and a "
-                            + roomItems.get(1) + ".");
-                }
-                if (roomItems.size() == 3) {
-                    System.out.println(roomItems.get(0) + ", "
-                            + roomItems.get(1) + " and a " + roomItems.get(2)
-                            + ".");
-                }
-            }
-        }
-
-        void count() {
-            this.count++;
-        }
-    }
-
-    // Class World contains title screen, introduction, and all rooms 
-    public static class World {
-        String[] foods = { "chicken", "curry", "sushi", "Starbucks" };
-	String[] colors = { "red", "blue", "green", "purple" };
-
-        // Print title screen and introduction text
-        void titleScreen() {
-            System.out.println("+-----------------------------------+");
-            System.out.println("| s t u y r u l e | w a r r i o r s |");
-            System.out.println("+-----------------------------------+");
-            System.out.println();
-            System.out
-                    .println("Muni | Lucas | Ali | Sean");
-            System.out.println("Pro Animis Potestateque Sapientiaque");
-            System.out.println();
-        }
-
-        // Special commands
-
-        // Load player inventory
-        static Inventory inventory = new Inventory();
-
-        // Start game
-        void roomOne() {
-
-            // Load room one
-            Room roomOne = new Room();
-            roomOne.setIndex(1);
-            roomOne.setName("Homeroom");
-            roomOne.setDescription("You're in your homeroom. There are other freshmen in here who are just as stringy looking as you are. Your homeroom teacher sits in her chair, apathetic. The teacher, not the chair. Although if the chair could be bored, it would. Meanwhile the frenzy of new students envelops you, you see your ID and Schedule amidst the chaos.");
-            roomOne.setCount(1);
-            ArrayList<String> roomOneItems = new ArrayList<String>();
-            roomOneItems.add("ID");
-            roomOneItems.add("Schedule");
-            roomOne.setItems(roomOneItems);
-
-            // Display room one description and items
-            System.out.println(roomOne.getDescription());
-            roomOne.printItems(roomOneItems);
-
-            // Get input and play room 1
-            String input = getInput();
-            while (true) {
-                // Look
-                if (input.equals("look") || input.equals("look room")
-                        || input.equals("look around")) {
-                    System.out.println(roomOne.getDescription());
-                    roomOne.printItems(roomOneItems);
-                }
-                // Get ID
-                else if (input.equals("get ID")
-                        && roomOneItems.contains("ID")) {
-                    roomOneItems.remove("ID");
-                    this.inventory.add("ID");
-                } else if (input.equals("get ID")
-                        && !roomOneItems.contains("ID")) {
-                    System.out.println("You already have your ID!");
-                }
-                // Get Schedule
-                else if (input.equals("get key")
-                        && roomOneItems.contains("key")) {
-                    roomOneItems.remove("key");
-                    this.inventory.add("key");
-                } else if (input.equals("get key")
-                        && !roomOneItems.contains("key")) {
-                    System.out.println("You already have the key.");
-                }
-
-		// Read ID
-		else if ((input.equals("read ID") || input.equals("look ID") || input.equals("check ID")) 
-			 && !roomOneItems.contains("ID")) {
-		    Scanner info = new Scanner( System.in );
-		    
-		    
-			 }
-			 else if {
-			     ((input.equals("read ID") || input.equals("look ID") || input.equals("check ID") 
-			       && roomOneItems.contains("ID")) {
-				 System.out.println("You should try getting your ID first...");
-			     }
-
-                else if (input.equals("leave")) {
-                    System.out.println("You exit the room.");
-                    System.out.println();
-                    this.roomTwo();
-                }
-
-                // Catch-all for unavailable actions
-                else if (!isValidSystemCommand(input)) {
-                    System.out.println("Silly freshman. Try reading your ID or schedule.");
-                }
-                input = getInput();
-            }
-
-        }
-
-        void roomTwo() {
-
-            // Load room two
-            Room roomTwo = new Room();
-            roomTwo.setIndex(2);
-            roomTwo.setName("Living room");
-            roomTwo.setDescription("You are in the living room.");
-            roomTwo.setCount(1);
-            ArrayList<String> roomTwoItems = new ArrayList<String>();
-            roomTwoItems.add("note");
-            roomTwoItems.add("cell phone");
-            roomTwo.setItems(roomTwoItems);
-
-            // Display room one description and items
-            System.out.println(roomTwo.getDescription());
-            roomTwo.printItems(roomTwoItems);
-
-            // Get input and play room 2
-            String input = getInput();
-            while (true) {
-                // Look
-                if (input.equals("look") || input.equals("look room")
-                        || input.equals("look around")) {
-                    System.out.println(roomTwo.getDescription());
-                    roomTwo.printItems(roomTwoItems);
-                }
-                // Get note
-                else if (input.equals("get note")
-                        && roomTwoItems.contains("note")) {
-                    roomTwoItems.remove("note");
-                    this.inventory.add("note");
-                } else if (input.equals("get note")
-                        && !roomTwoItems.contains("note")) {
-                    System.out.println("You already have the note.");
-                }
-                // Read note
-                else if (input.equals("read note") || input.equals("look note")
-                        || input.equals("look at note")) {
-                    System.out.println("The note reads \"0614\"");
-                }
-
-                // Get cell phone
-                else if (input.equals("get cell phone")
-                        && roomTwoItems.contains("cell phone")) {
-                    roomTwoItems.remove("cell phone");
-                    this.inventory.add("cell phone");
-                } else if (input.equals("get cell phone")
-                        && !roomTwoItems.contains("cell phone")) {
-                    System.out.println("You already have the cell phone.");
-                }
-
-                // Leave to room 3 code goes here
-
-                // Catch-all for unavailable actions
-                else if (!isValidSystemCommand(input)) {
-                    System.out.println("You can't do that.");
-                }
-
-
-
-
-                input = getInput();
-            }
-
-        }
-
-    }
-}
+    

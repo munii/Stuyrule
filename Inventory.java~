@@ -1,7 +1,13 @@
-public static class Menu {
+public static class Inventory {
 
         // Create inventory
-        ArrayList<String> menu = new ArrayList<String>();
+        ArrayList<String> inv = new ArrayList<String>();
+
+        // Add item to inventory (and print message)
+        void add(String item) {
+            System.out.println("You pick up the " + item + ".");
+            this.inv.add(item);
+        }
 
         // Print inventory
         void print() {
@@ -18,3 +24,9 @@ public static class Menu {
             }
         }
 
+        // Check if item is already in inventory
+        boolean isInInventory(String item) {
+
+            return false;
+        }
+    }
