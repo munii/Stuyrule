@@ -19,15 +19,12 @@ public class World {
 
         // Load player inventory
     static Inventory inventory = new Inventory();
-     
+    
     
         // Start game
-        void roomOne() {
-        	Battle battleSystem = new Battle(); //Initializations for the Room, may want to change this
-		Character chair = new Character("chair");
-		Character teacher = new Character("teacher");
-		Link Link = new Link("Link", 2);
-
+         void roomOne(String name, int Linkcolor) {
+			Battle b = new Battle();
+			Link l = new Link(name, Linkcolor);
             // Load room one
             Room roomOne = new Room();
             roomOne.setIndex(1);
@@ -79,11 +76,13 @@ public class World {
                 }
 	       
 		else if (input.equals("fight chair")) {
-		    battleSystem.battle(Link, chair);
+			Character chair = new Character("chair");
+		    b.battle(l, chair);
 		}
 	       
 		else if (input.equals("fight teacher")) {
-		    battleSystem.battle(Link, teacher);
+			Character teacher = new Character("teacher");
+		    b.battle(l, teacher);
 		}
 		  
 
@@ -92,7 +91,7 @@ public class World {
                     System.out.println("Silly freshman.");
                 }
                 input = StuyruleWarriors.getInput();
-            }
+            } 
 
         }
 
@@ -160,6 +159,6 @@ public class World {
                 input = StuyruleWarriors.getInput();
             }
 
-        }
+        } 
 
 }
