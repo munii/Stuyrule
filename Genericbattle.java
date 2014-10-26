@@ -6,8 +6,8 @@ public class Genericbattle {
 		Random r = new Random();
 		System.out.println("You have encountered" + " " + s);
 		while (l.HP != 0.0 && c.HP != 0.0) {
-			String LinkHP = "Your HP:" + l.HP;
-			String EnemyHP = "Enemy's HP:" + c.HP;
+			String LinkHP = "Your HP:" + l.HP + "/" + l.maxHP;
+			String EnemyHP = "Enemy's HP:" + c.HP + "/" + c.maxHP;
 			System.out.println (LinkHP);
 			System.out.println (EnemyHP);
 			System.out.println ("What will you do? Enter the number that corresponds to the action of your choice");
