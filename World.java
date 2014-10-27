@@ -24,7 +24,9 @@ public class World {
         // Start game
          void roomOne(String name, int Linkcolor) {
 			Battle b = new Battle();
+			//Chair chair = new Chair();
 			Link l = new Link(name, Linkcolor);
+			Chair chair = new Chair();
             // Load room one
             Room roomOne = new Room();
             roomOne.setIndex(1);
@@ -76,12 +78,12 @@ public class World {
                 }
 	       
 		else if (input.equals("fight chair")) {
-			Character chair = new Character("chair");
+			//Chair chair = new Chair();
 		    b.battle(l, chair);
 		}
 	       
 		else if (input.equals("fight teacher")) {
-			Character teacher = new Character("teacher");
+			Teacher teacher = new Teacher();
 		    b.battle(l, teacher);
 		}
 		  
