@@ -1,6 +1,6 @@
 import java.util.*;
 public class Battle {
-	public void battle (Link l, Character c) {
+	public void battle (Link l, Enemy c) {
 		String s = c.name;
 		Scanner sc = new Scanner(System.in);
 		Random r = new Random();
@@ -150,5 +150,6 @@ public class Battle {
 				//Battle ended, now what? need to work on this
 				}
 	}
+		
 }
 }
