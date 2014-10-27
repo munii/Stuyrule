@@ -1,17 +1,17 @@
 import java.util.*;
 
-public class Character {
+public class Guy {
 	
-    public static String name;
-    public static double defense;
-    public static double HP;
-    public static double maxHP;
-    public static double damage;
-    public static double multiplier;
-    public static int accuracy;
-    public static int speed;
+    protected static String name;
+    protected static double defense;
+    protected static double HP;
+    protected static double maxHP;
+    protected static double damage;
+    protected static double multiplier;
+    protected static int accuracy;
+    protected static int speed;
     
-    public Character() {
+    public Guy() {
 	name = "Trainee";
 	maxHP = 3.0;
 	HP = 3.0;
@@ -21,7 +21,7 @@ public class Character {
 	defense = .25;
     }
     
-    public Character( String n ) {
+    public Guy( String n ) {
 	name = n;
 	maxHP = 3.0;
 	HP = 3.0;
@@ -31,7 +31,7 @@ public class Character {
 	defense = .25;
     }
 
-    public void attack( Character c ) {
+    public void attack( Link c ) {
 	Random rand = new Random();
 	if (rand.nextInt(100) + 1 <= accuracy){
 	    if (c.HP - (damage * multiplier - defense) >= 0){
@@ -65,7 +65,7 @@ public class Character {
 	return s;
     }
 
-    public void doubleEdge(Character e){
+    public void doubleEdge(Link e){
 	Random rand = new Random();
 	if (rand.nextInt(100) + 1 <= accuracy){
 	    if (e.HP - damage * multiplier * 1.5 >= 0){
@@ -82,7 +82,7 @@ public class Character {
 	
     }
     
-    public void strongAttack(Character e){
+    public void strongAttack(Link e){
 	Random rand = new Random();
 	if (rand.nextInt(100) + 1 <= accuracy - 10){
 	    if (e.HP - ((damage + .5) * multiplier - defense) >= 0){
@@ -97,7 +97,7 @@ public class Character {
 	}	
     }
 	
-    public void sneakAttack(Character e){
+    public void sneakAttack(Link e){
 	Random rand = new Random();
 	if (rand.nextInt(100) + 1 <= accuracy - 15){
 	    if (e.HP - (damage * multiplier) >= 0){
