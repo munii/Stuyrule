@@ -29,3 +29,4 @@ public class Moranondorf extends Character {
 		l.HP = 0;
 		}
 	}
+}
