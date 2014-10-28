@@ -1,4 +1,4 @@
-public class Moranondorf extends Character {
+public class Moranondorf extends Guy {
 	public Moranondorf () { //Placeholder values
 		defense = 5000.0;
 		HP = 5000.0;
@@ -7,7 +7,7 @@ public class Moranondorf extends Character {
 		multiplier = 5.0;
 		accuracy = 100;
 		speed = 100;
-		name = Moranondorf;
+		name = "Moranondorf";
 		}
 	//Super Attacks specific to Moranondorf
 	public void unleash(Link l) { //Really lazy ultimate attack
