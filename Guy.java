@@ -36,10 +36,10 @@ public class Guy {
 	if (rand.nextInt(100) + 1 <= accuracy){
 	    if (c.HP - (damage * multiplier - c.defense) >= 0){
 		c.HP-=( damage * multiplier - c.defense);
-		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier - c.defense) + " " + "points of damage to" + " " c.name);
+		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier - c.defense) + " " + "points of damage to" + " " + c.name);
 	    }
 	    else{
-	    	System.out.println(this.name + " " + "dealt" + " " + c.HP + " " + "points of damage to" + " " c.name);
+	    	System.out.println(this.name + " " + "dealt" + " " + c.HP + " " + "points of damage to" + " " + c.name);
 		c.HP = 0;
 	    }
 	}
@@ -72,10 +72,10 @@ public class Guy {
 	if (rand.nextInt(100) + 1 <= accuracy){
 	    if (e.HP - damage * multiplier * 1.5 >= 0){
 		e.HP-=( damage * multiplier * 1.5);
-		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier * 1.5) + " " + "points of damage to" + " " e.name);
+		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier * 1.5) + " " + "points of damage to" + " " + e.name);
 	    }
 	    else{
-	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " e.name);
+	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " + e.name);
 		e.HP = 0;
 	    }
 	    HP -= (damage * multiplier / 4 - defense);
@@ -92,10 +92,10 @@ public class Guy {
 	if (rand.nextInt(100) + 1 <= accuracy - 10){
 	    if (e.HP - ((damage + .5) * multiplier - e.defense) >= 0){
 		e.HP-=( (damage + .5) * multiplier - e.defense);
-		System.out.println(this.name + " " + "dealt" + " " + ( (damage + .5) * multiplier - e.defense) + " " + "points of damage to" + " " e.name);
+		System.out.println(this.name + " " + "dealt" + " " + ( (damage + .5) * multiplier - e.defense) + " " + "points of damage to" + " " + e.name);
 	    }
 	    else{
-	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " e.name);
+	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " + e.name);
 		e.HP = 0;
 	    }
 	}
@@ -109,10 +109,10 @@ public class Guy {
 	if (rand.nextInt(100) + 1 <= accuracy - 15){
 	    if (e.HP - (damage * multiplier) >= 0){
 		e.HP-=( damage * multiplier);
-		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier) + " " + "points of damage to" + " " e.name);
+		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier) + " " + "points of damage to" + " " + e.name);
 	    }
 	    else{
-	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " e.name);
+	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " + e.name);
 		e.HP = 0;
 	    }
 	}
