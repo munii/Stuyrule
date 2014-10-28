@@ -24,7 +24,20 @@ public class Link{
 	defense = 100.0;
 	damage = 100.0;
 	name = n;
-    color = c;
+    	color = c;
+    	if (color == 1) {
+    		HP += 20.0;
+    		maxHP += 20.0;
+    	}
+    	else if (color == 2) {
+    		damage += 20.0;
+    	}
+    	else if (color == 3) {
+    		speed += 5;
+    	}
+    	else {
+    		defense += 20.0;
+    	}
 	accuracy = 95;
 	multiplier = 2.0;
 	HP = 100.0;
@@ -33,15 +46,17 @@ public class Link{
 	public void attack( Guy c ) {
 	Random rand = new Random();
 	if (rand.nextInt(100) + 1 <= accuracy){
-	    if (c.HP - (damage * multiplier - defense) >= 0){
-		c.HP-=( damage * multiplier - defense);
+	    if (c.HP - (damage * multiplier - c.defense) >= 0){
+		c.HP-=( damage * multiplier - c.defense);
+		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier - c.defense) + " " + "points of damage to" + " " c.name);
 	    }
 	    else{
+	    	System.out.println(this.name + " " + "dealt" + " " + c.HP + " " + "points of damage to" + " " c.name);
 		c.HP = 0;
 	    }
 	}
 	else{
-	    System.out.println("I missed... :(");
+	    System.out.println(this.name + " " + "missed!");
 	}
     }
     
@@ -69,14 +84,17 @@ public class Link{
 	if (rand.nextInt(100) + 1 <= accuracy){
 	    if (e.HP - damage * multiplier * 1.5 >= 0){
 		e.HP-=( damage * multiplier * 1.5);
+		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier * 1.5) + " " + "points of damage to" + " " e.name);
 	    }
 	    else{
+	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " e.name);
 		e.HP = 0;
 	    }
 	    HP -= (damage * multiplier / 4 - defense);
+	    System.out.println(this.name + "'s ferocious attack recoiled and did" + " " + (damage * multiplier / 4 - defense) + " " + "points of self inflicted damage (masochist)");
 	}
 	else{
-	    System.out.println("I missed bad");
+	    System.out.println(this.name + " " + "missed bad");
 	}
 	
     }
@@ -84,15 +102,17 @@ public class Link{
     public void strongAttack(Guy e){
 	Random rand = new Random();
 	if (rand.nextInt(100) + 1 <= accuracy - 10){
-	    if (e.HP - ((damage + .5) * multiplier - defense) >= 0){
-		e.HP-=( (damage + .5) * multiplier - defense);
+	    if (e.HP - ((damage + .5) * multiplier - e.defense) >= 0){
+		e.HP-=( (damage + .5) * multiplier - e.defense);
+		System.out.println(this.name + " " + "dealt" + " " + ( (damage + .5) * multiplier - e.defense) + " " + "points of damage to" + " " e.name);
 	    }
 	    else{
+	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " e.name);
 		e.HP = 0;
 	    }
 	}
 	else{
-	    System.out.println("I missed... :(");
+	    System.out.println(this.name + " " + "missed... :(");
 	}	
     }
 	
@@ -101,13 +121,15 @@ public class Link{
 	if (rand.nextInt(100) + 1 <= accuracy - 15){
 	    if (e.HP - (damage * multiplier) >= 0){
 		e.HP-=( damage * multiplier);
+		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier) + " " + "points of damage to" + " " e.name);
 	    }
 	    else{
+	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " e.name);
 		e.HP = 0;
 	    }
 	}
 	else{
-	    System.out.println("I missed... :(");
+	    System.out.println(this.name + " " + "missed... :(");
 	}	
     }
 }
