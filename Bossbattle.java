@@ -1,3 +1,4 @@
+import java.util.*;
 public class Bossbattle {
 	public void bossfight(Link l, Moranondorf m) {
 		System.out.println("Moranondorf slowly rises from his desk"); //Desk? Still not sure what game this is
@@ -79,8 +80,8 @@ public class Bossbattle {
 					else{
 						l.sneakAttack(m);
 					}
-					int x = r.nextInt(9);
-					if (x == 0) {
+					int y = r.nextInt(9);
+					if (y == 0) {
 						System.out.println ("Moranondorf unleashes his dark power upon you!");
 						m.unleashgoddess(l);
 						}
@@ -116,7 +117,7 @@ public class Bossbattle {
 					else{
 						l.sneakAttack(m);
 					}
-					int x = r.nextInt(9);
+					int y = r.nextInt(9);
 					if (x == 0) {
 						System.out.println ("Moranondorf unleashes his dark power upon you!");
 						m.unleash(l);
@@ -139,3 +140,4 @@ public class Bossbattle {
 				}
 			}
 		}
+	
