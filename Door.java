@@ -4,7 +4,7 @@ public class Door extends Enemy {
     public Door () {
     }
 
-    public void fall() {
+    public void fall(Link c) {
 	Random rand = new Random();
 	if (rand.nextInt(100) + 1 <= accuracy){
 	    if (c.HP - (damage * multiplier - c.defense) >= 0){
