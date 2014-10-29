@@ -24,7 +24,11 @@ public class Link{
 	defense = 100.0;
 	damage = 100.0;
 	name = n;
-    	color = c;
+    color = c;
+	accuracy = 95;
+	multiplier = 2.0;
+	HP = 100.0;
+	maxHP = 100.0;
     	if (color == 1) {
     		HP += 20.0;
     		maxHP += 20.0;
@@ -38,10 +42,6 @@ public class Link{
     	else {
     		defense += 20.0;
     	}
-	accuracy = 95;
-	multiplier = 2.0;
-	HP = 100.0;
-	maxHP = 100.0;
     }
 	public void attack( Guy c ) {
 	Random rand = new Random();
