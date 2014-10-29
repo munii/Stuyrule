@@ -114,7 +114,7 @@ public class Guy {
 	
     public void sneakAttack(Guy e){
 	Random rand = new Random();
-	if (rand.nextInt(100) + 1 <= accuracy - 15){
+	if (rand.nextInt(100) + 1 <= accuracy - 20){
 	    if (e.HP - (damage * multiplier) >= 0){
 		e.HP-=( damage * multiplier);
 		System.out.println(this.name + " " + "dealt" + " " + ( damage * multiplier) + " " + "points of damage to" + " " + e.name);
