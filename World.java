@@ -98,12 +98,12 @@ public class World {
 	       
 		else if (input.equals("fight teacher")) {
 			if (!roomOneEnemies.contains ("teacher")) {
-				System.out.println("You have already defeated chair!");
+				System.out.println("You have already defeated teacher!");
 					}
 				else {
 					Teacher teacher = new Teacher();
 					b.battle(l, teacher);
-					roomOneEnemies.remove("chair");
+					roomOneEnemies.remove("teacher");
 		}
 	}
 		 
