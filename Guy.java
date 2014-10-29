@@ -98,17 +98,18 @@ public class Guy {
 	if (rand.nextInt(100) + 1 <= accuracy - 20){
 	    if ((damage * (multiplier + .5) - e.defense) > 0){
 		if (e.HP - (damage * (multiplier + .5) - e.defense) >= 0){
-		e.HP -= (damage * (multiplier + .5) - e.defense);
-		System.out.println(this.name + " " + "dealt" + " " + (damage * (multiplier + .5) - e.defense) + " " + "points of damage to" + " " + e.name);
-	    }
-	    else{
-	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " + e.name);
-		e.HP = 0;
+		    e.HP -= (damage * (multiplier + .5) - e.defense);
+		    System.out.println(this.name + " " + "dealt" + " " + (damage * (multiplier + .5) - e.defense) + " " + "points of damage to" + " " + e.name);
+		}
+		else{
+		    System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " + e.name);
+		    e.HP = 0;
+		}
 	    }
 	}
 	else{
 	    System.out.println(this.name + " " + "missed... :(");
-	}	
+	}
     }
 	
     public void sneakAttack(Guy e){
