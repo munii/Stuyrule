@@ -49,7 +49,7 @@ public class Bossbattle {
 			System.out.println("Now You Will Know True Fear at the Hands of the Mighty Moranondorf!");
 			m.HP = 10000.0;
 			m.maxHP = 10000.0;
-			if (inventory.isInInventory("Goddess Sword") == true) { //Experimental Goddesss Code
+			if (this.inventory.contains("Goddess Sword")) { //Experimental Goddesss Code
 				System.out.println("What! Impossible How did you get your hands on that sword!");
 				System.out.println("Grr. This changes nothing Freshman");
 				System.out.println("The Goddess Sword reacts to Moranondorf's dark power!");
