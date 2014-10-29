@@ -1,6 +1,6 @@
-public class Lostallion extends Enemy {
+public class Skriekster extends Enemy {
 
-    public Lostallion () {
+    public Shriekster () {
 	HP = 150.0;
 	maxHP = 150.0; //Make this low
 	damage =100.0; //High damage
