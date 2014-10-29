@@ -13,22 +13,22 @@ public class Link{
     //Constructors
 	public Link() {
 	name = "Trainee";
-	maxHP = 3.0;
-	HP = 3.0;
-	damage = .5;
+	maxHP = 200.0;
+	HP = 200.0;
+	damage = 50.0;
 	multiplier = 1.5;
-	accuracy = 85;
-	defense = .25;
+	accuracy = 95;
+	defense = 25.0;
     }
     public Link(String n, int c) {
-	defense = 100.0;
-	damage = 100.0;
+	defense = 25.0;
+	damage = 50.0;
 	name = n;
     color = c;
 	accuracy = 95;
-	multiplier = 2.0;
-	HP = 100.0;
-	maxHP = 100.0;
+	multiplier = 1.5;
+	HP = 200.0;
+	maxHP = 200.0;
     	if (color == 1) {
     		HP += 20.0;
     		maxHP += 20.0;
