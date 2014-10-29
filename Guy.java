@@ -90,8 +90,8 @@ public class Guy {
 	else{
 	    System.out.println(this.name + " " + "missed bad");
 	}
-	
-     }
+
+    }
     
     public void strongAttack(Link e){
 	Random rand = new Random();
