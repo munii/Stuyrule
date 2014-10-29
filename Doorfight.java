@@ -37,7 +37,7 @@ public class Doorfight {
 			l.sneakAttack(m);
 			}//There should be items usage here but Im not sure what to do for it right now
 			int thing = r.nextInt(99);
-			if (thing <= 4) {
+			if (thing <= 26) {
 			  m.fall(l);
 			  }
 			else {m.attack (l);
