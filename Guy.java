@@ -71,7 +71,7 @@ public class Guy {
 
      public void doubleEdge(Link e){
 	Random rand = new Random();
-	if (rand.nextInt(100) + 1 <= accuracy - 5){
+	if (rand.nextInt(100) + 1 <= accuracy - 10){
 		if (damage * multiplier * 1.5 - e.defense > 0){
 	    if (e.HP - (damage * multiplier * 1.5 - e.defense) >= 0){
 		e.HP-=( damage * multiplier * 1.5);
@@ -95,10 +95,11 @@ public class Guy {
     
     public void strongAttack(Link e){
 	Random rand = new Random();
-	if (rand.nextInt(100) + 1 <= accuracy - 10){
-	    if (e.HP - ((damage + .5) * multiplier - e.defense) >= 0){
-		e.HP-=( (damage + .5) * multiplier - e.defense);
-		System.out.println(this.name + " " + "dealt" + " " + ( (damage + .5) * multiplier - e.defense) + " " + "points of damage to" + " " + e.name);
+	if (rand.nextInt(100) + 1 <= accuracy - 20){
+	    if ((damage * (multiplier + .5) - e.defense) > 0){
+		if (e.HP - (damage * (multiplier + .5) - e.defense) >= 0){
+		e.HP -= (damage * (multiplier + .5) - e.defense);
+		System.out.println(this.name + " " + "dealt" + " " + (damage * (multiplier + .5) - e.defense) + " " + "points of damage to" + " " + e.name);
 	    }
 	    else{
 	    	System.out.println(this.name + " " + "dealt" + " " + e.HP + " " + "points of damage to" + " " + e.name);
