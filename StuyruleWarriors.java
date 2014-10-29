@@ -20,11 +20,10 @@ public class StuyruleWarriors {
 	n = s.nextLine();
 	System.out.println("Welcome to Stuyrule " + n + " Last question before you go to homeroom- what's your favorite color out of these four? \n (1) Green \n (2) Red \n (3) Blue \n (4) Purple \n >");
 	color = s.nextInt();
-	if ((color != 1) || (color != 2) || (color != 3) || (color != 4)){
-	    System.out.println("Please enter a valid number from 1-4");
-	    color = s.nextInt();
+	while ((color != 1) && (color != 2) && (color != 3) && (color != 4)){
+		System.out.println("Please enter a valid number from 1-4");
+	    	color = s.nextInt();
 	}
-	else{
 	System.out.println("You're on your way!");
 	}
 
