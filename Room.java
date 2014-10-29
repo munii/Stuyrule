@@ -8,6 +8,7 @@ public class Room {
         private String description;
         private ArrayList<String> items;
         private ArrayList<String> commands;
+		private ArrayList<String> enemies;
 	private ArrayList<String> foods;
 	private ArrayList<String> colors;
 	private ArrayList<String> subjects;
@@ -50,6 +51,10 @@ public class Room {
 
         public void setItems(ArrayList<String> aItems) {
             this.items = aItems;
+        }
+
+        public void setEnemies(ArrayList<String> aEnemies) {
+            this.enemies = aEnemies;
         }
 
         public ArrayList<String> getCommands() {
