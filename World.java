@@ -27,6 +27,7 @@ public class World {
 			//Chair chair = new Chair();
 			Link l = new Link(name, Linkcolor);
 			Chair chair = new Chair();
+			//Teacher teacher = new Teacher();
             // Load room one
             Room roomOne = new Room();
             roomOne.setIndex(1);
@@ -34,14 +35,18 @@ public class World {
             roomOne.setDescription("You're in your homeroom. There are other freshmen in here who are just as stringy looking as you are. Your homeroom teacher sits in her chair, apathetic. The teacher, not the chair. Although if the chair could be bored, it would.");
             roomOne.setCount(1);
             ArrayList<String> roomOneItems = new ArrayList<String>();
+			ArrayList<String> roomOneEnemies = new ArrayList<String>();
             roomOneItems.add("Sword");
             roomOneItems.add("Red Bull");
+			roomOneEnemies.add("chair");
+			roomOneEnemies.add("teacher");
+			roomOne.setEnemies(roomOneEnemies);
             roomOne.setItems(roomOneItems);
 
             // Display room one description and items
             System.out.println(roomOne.getDescription());
             roomOne.printItems(roomOneItems);
-	    System.out.println("The following entities seem prime for battle: Chair,  Teacher");
+			System.out.println("The following entities seem prime for battle: Chair,  Teacher");
 
             // Get input and play room 1
             String input = StuyruleWarriors.getInput();
@@ -78,16 +83,30 @@ public class World {
                 }
 	       
 		else if (input.equals("fight chair")) {
+			if ( !roomOneEnemies.contains ("chair")) {
+				System.out.println("You have already defeated chair!");
+					}
 			//Chair chair = new Chair();
-		    b.battle(l, chair);
-		}
+				else {
+					b.battle(l, chair);
+					roomOneEnemies.remove("chair");
+				}
+			}
+					
+		
+		
 	       
 		else if (input.equals("fight teacher")) {
-			Teacher teacher = new Teacher();
-		    b.battle(l, teacher);
+			if (!roomOneEnemies.contains ("teacher")) {
+				System.out.println("You have already defeated chair!");
+					}
+				else {
+					Teacher teacher = new Teacher();
+					b.battle(l, teacher);
+					roomOneEnemies.remove("chair");
 		}
-		  
-
+	}
+		 
                 // Catch-all for unavailable actions
                 else if (!StuyruleWarriors.isGameCommand(input)) {
                     System.out.println("Silly freshman.");
