@@ -1,4 +1,4 @@
-public class Moranondorf extends Guy {
+public class Moranondorf extends Enemy {
 	public Moranondorf () { //Placeholder values
 		defense = 5000.0;
 		HP = 5000.0;
@@ -9,7 +9,7 @@ public class Moranondorf extends Guy {
 		speed = 100;
 		name = "Moranondorf";
 		}
-	//Super Attacks specific to Moranondorf
+	//Super Attacks specific to Moranondorf Someone fix these attacks to not suck
 	public void unleash(Link l) { //Really lazy ultimate attack
 		damage *=2;
 		if (l.HP - (damage * multiplier - l.defense) >= 0){
@@ -20,7 +20,7 @@ public class Moranondorf extends Guy {
 	    }
 	}
 	public void unleashgoddess(Link l) {
-		System.out.println("The Goddess Sword's Light weakens the darkness");
+		System.out.println("The Goddess Sword's Light pierces the darkness");
 		damage /= 2;
 		if (l.HP - (damage * multiplier - l.defense) >=0) {
 		l.HP -= (damage * multiplier - l.defense);
