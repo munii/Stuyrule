@@ -6,7 +6,7 @@ public class BowlingKingFight {
 		System.out.println("BOWLINGKING STRIKE!!!!"); 
 		Scanner sc = new Scanner(System.in);
 		Random r = new Random();
-		while (l.HP != 0.0 && m.HP > 2500.0) { //placeholder HP
+		while (l.HP != 0.0 && m.HP != 0.0) { //placeholder HP
 			String LinkHP = "Your HP:" + l.HP + "/" + l.maxHP;
 			String EnemyHP = "Enemy's HP:" + m.HP + "/" + m.maxHP;
 			System.out.println (LinkHP);
