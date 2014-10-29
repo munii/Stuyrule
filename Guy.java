@@ -13,22 +13,22 @@ public class Guy {
     
     public Guy() {
 	name = "Trainee";
-	maxHP = 3.0;
-	HP = 3.0;
-	damage = .5;
+	maxHP = 75.0;
+	HP = 75.0;
+	damage = 20.0;
 	multiplier = 1.5;
-	accuracy = 85;
-	defense = .25;
+	accuracy = 90;
+	defense = 10.0;
     }
     
     public Guy( String n ) {
 	name = n;
-	maxHP = 3.0;
-	HP = 3.0;
-	damage = .5;
+	maxHP = 75.0;
+	HP = 75.0;
+	damage = 20.0;
 	multiplier = 1.5;
-	accuracy = 85;
-	defense = .25;
+	accuracy = 90;
+	defense = 10.0;
     }
 
    public void attack( Link c ) {
