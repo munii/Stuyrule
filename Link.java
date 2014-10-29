@@ -19,6 +19,7 @@ public class Link{
 	multiplier = 1.5;
 	accuracy = 95;
 	defense = 25.0;
+	speed = 10;
     }
     public Link(String n, int c) {
 	defense = 25.0;
@@ -28,6 +29,7 @@ public class Link{
 	accuracy = 95;
 	multiplier = 1.5;
 	HP = 200.0;
+	speed = 10;
 	maxHP = 200.0;
     	if (color == 1) {
     		HP += 20.0;
