@@ -2,12 +2,13 @@ import java.util.*;
 public class FinalBossbattle {
 	public void Finalbossfight(Link l, Moranondorf m) {
 		System.out.println("Moranondorf slowly rises from his desk"); //Desk? Still not sure what game this is
+		System.out.println("So your the one whose been causing all this trouble")
 		System.out.println("You have exceeded my expectations, Puny Freshman"); //Main chara is a freshman right??
 		System.out.println("But Now Your Path Ends Here!"); //Maybe too cheesy
 		System.out.println("None have withstood the power of the mighty Moranondorf!");
 		Scanner sc = new Scanner(System.in);
 		Random r = new Random();
-		while (l.HP != 0.0 && m.HP > 2500.0) { //placeholder HP
+		while (l.HP != 0.0 && m.HP > (m.maxHP/2)) { //placeholder HP
 			String LinkHP = "Your HP:" + l.HP + "/" + l.maxHP;
 			String EnemyHP = "Enemy's HP:" + m.HP + "/" + m.maxHP;
 			System.out.println (LinkHP);
@@ -47,8 +48,6 @@ public class FinalBossbattle {
 		else {
 			System.out.println("It seems I have underestimated you, Freshman");
 			System.out.println("Now You Will Know True Fear at the Hands of the Mighty Moranondorf!");
-			m.HP = 10000.0;
-			m.maxHP = 10000.0;
 			if (this.inventory.contains("Goddess Sword")) { //Experimental Goddesss Code
 				System.out.println("What! Impossible How did you get your hands on that sword!");
 				System.out.println("Grr. This changes nothing Freshman");
