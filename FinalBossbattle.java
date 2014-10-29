@@ -1,6 +1,6 @@
 import java.util.*;
-public class Bossbattle {
-	public void bossfight(Link l, Moranondorf m) {
+public class FinalBossbattle {
+	public void Finalbossfight(Link l, Moranondorf m) {
 		System.out.println("Moranondorf slowly rises from his desk"); //Desk? Still not sure what game this is
 		System.out.println("You have exceeded my expectations, Puny Freshman"); //Main chara is a freshman right??
 		System.out.println("But Now Your Path Ends Here!"); //Maybe too cheesy
